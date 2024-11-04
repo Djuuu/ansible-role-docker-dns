@@ -1,0 +1,27 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+# {{ ansible_managed }}
+# {{ template_fullpath }}
+
+name: {{ docker_project_slug }}
+
+services:
+
+  docker-dns:
+    container_name: {{ docker_project_slug }}
+    image: phensley/docker-dns
+    command: --domain {{ docker_dns_domain }}
+    restart: always
+
+    {{ docker_project_compose_service_additional_options | indent(4) }}
+
+    volumes:
+      - "/var/run/docker.sock:/docker.sock"
+
+    labels:
+      # What's up Docker? - https://github.com/getwud/wud
+      wud.watch.digest: true
+
+networks:
+  {{ docker_project_default_network | indent(2) }}
+
+{{ docker_project_compose_additional_options }}
