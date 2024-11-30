@@ -8,7 +8,7 @@ services:
 
   docker-dns:
     container_name: {{ docker_project_slug }}
-    image: phensley/docker-dns
+    image: phensley/docker-dns:{{ docker_dns_version }}
     command: --domain {{ docker_dns_domain }}
     restart: always
 

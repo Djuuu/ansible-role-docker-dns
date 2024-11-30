@@ -32,6 +32,8 @@ docker_dns_project_name: docker-dns
 
 # docker-dns project variables
 
+docker_dns_version: latest
+
 docker_dns_domain: example.net
 ```
 
