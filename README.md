@@ -60,11 +60,11 @@ Identify docker clients in [Pi-hole](https://pi-hole.net/) using docker-dns for 
 
 * Assign a specific IP subnet to docker-dns
 
-  ex: using _`{{ docker_project_prefix }}`_**`_compose_ipv4_subnet`** [dynamic variable](https://github.com/Djuuu/ansible-role-docker-project#dynamic-variables)
+  ex: using _`{{ docker_project_prefix }}`_**`_network_ipv4_subnet`** [dynamic variable](https://github.com/Djuuu/ansible-role-docker-project#dynamic-variables)
 
   `host_vars/example/docker_dns.yml`: 
   ```yaml
-  docker_dns_compose_ipv4_subnet: 172.xx.0.0/16
+  docker_dns_network_ipv4_subnet: 172.xx.0.0/16
   ```
   (Container will usually take IP `172.xx.0.2`)
 

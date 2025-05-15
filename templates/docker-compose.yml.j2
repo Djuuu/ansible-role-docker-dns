@@ -7,12 +7,12 @@ name: {{ docker_project_slug }}
 services:
 
   docker-dns:
-    container_name: {{ docker_project_slug }}
     image: phensley/docker-dns:{{ docker_dns_version }}
     command: --domain {{ docker_dns_domain }}
-    restart: unless-stopped
+    container_name: {{ docker_project_slug }}
+    restart: {{ docker_project_restart }}
 
-    {{ docker_project_compose_service_additional_options | indent(4) }}
+    {{ docker_project_service_additional_options | indent(4) }}
 
     volumes:
       - "/var/run/docker.sock:/docker.sock"
@@ -21,7 +21,6 @@ services:
       # What's up Docker? - https://github.com/getwud/wud
       wud.watch.digest: true
 
-networks:
-  {{ docker_project_default_network | indent(2) }}
+{{ docker_project_networks }}
 
 {{ docker_project_compose_additional_options }}
