@@ -17,9 +17,10 @@ services:
     volumes:
       - "/var/run/docker.sock:/docker.sock"
 
+    {% if docker_project_service_additional_labels %}
     labels:
-      # What's up Docker? - https://github.com/getwud/wud
-      wud.watch.digest: true
+      {{ docker_project_service_additional_labels | indent(6) }}
+    {% endif %}
 
 {{ docker_project_networks }}
 
